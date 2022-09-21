@@ -15,9 +15,9 @@ use App\Models\Listings;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/search', function(Request $request){
 //    dd($request);
@@ -29,7 +29,7 @@ Route::get('/search', function(Request $request){
     ]);
 });
 
-Route::get('/listings', function(){
+Route::get('/', function(){
     return view('listings',[
         'header' => 'Latest Listings',
         'listings' => Listings::all()
@@ -39,6 +39,6 @@ Route::get('/listings', function(){
 // Single listing
 Route::get('/listings/{id}', function ($id){
     return view('listing',[
-        'listing' => Listings::find_one($id)
+        'listing' => Listings::find($id)
     ]);
 });

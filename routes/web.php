@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Models\Listings;
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,14 +31,17 @@ Route::get('/search', function(Request $request){
 
 Route::get('/', function(){
     return view('listings',[
-        'header' => 'Latest Listings',
-        'listings' => Listings::all()
+        'header' => 'Latest Listing',
+        'listings' => Listing::all()
     ]);
 });
 
 // Single listing
-Route::get('/listings/{id}', function ($id){
-    return view('listing',[
-        'listing' => Listings::find($id)
-    ]);
+Route::get('/listing/{listing}',function(Listing $listing){
+    return view('listing',['listing' => $listing]);
 });
+//Route::get('/listing/{id}', function ($id){
+//    return view('listing',[
+//        'listing' => Listing::find($id)
+//    ]);
+//});

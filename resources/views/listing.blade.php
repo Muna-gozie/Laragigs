@@ -7,8 +7,9 @@
 <a href="/" class="inline-block text-black ml-4 mb-4"
 ><i class="fa-solid fa-arrow-left"></i> Back
 </a>
-<div class="mx-4">
-    <div class="bg-gray-50 border border-gray-200 p-10 rounded">
+
+{{--    <div class="bg-gray-50 border border-gray-200 p-10 rounded">--}}
+    <x-card class="p-10">
         <div
             class="flex flex-col items-center justify-center text-center"
         >
@@ -72,7 +73,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-card>
 </div>
 {{--<h2>{{$listing['title']}}</h2>--}}
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Listing;
+use \App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,6 @@ use App\Models\Listing;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
 Route::get('/search', function(Request $request){
 //    dd($request);
@@ -29,19 +27,13 @@ Route::get('/search', function(Request $request){
     ]);
 });
 
-Route::get('/', function(){
-    return view('listings',[
-        'header' => 'Latest Listing',
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/',[ListingController::class,'index']);
 
 // Single listing
-Route::get('/listing/{listing}',function(Listing $listing){
-    return view('listing',['listing' => $listing]);
-});
-//Route::get('/listing/{id}', function ($id){
-//    return view('listing',[
-//        'listing' => Listing::find($id)
-//    ]);
-//});
+Route::get('/listing/{listing}',[ListingController::class,'show']);
+
+//Show Create Form
+Route::get('/listings/create',[ListingController::class,'create']);
+
+// Store Listing
+Route::post('/listings',[ListingController::class,'store']);
